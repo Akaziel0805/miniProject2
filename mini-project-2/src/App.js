@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
-import Homepage from "./Pages.js/Homepage";
+import Homepage from "./pages/Homepage";
 
 class App extends Component {
   render() {
@@ -9,7 +10,9 @@ class App extends Component {
       <div>
         <Header />
         <Navigation />
-        <Homepage />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+        </Routes>
       </div>
     );
   }
