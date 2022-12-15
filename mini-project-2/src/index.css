@@ -12,3 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.options a {
+  text-decoration: none;
+  color: white;
+}
+
+.options a:hover {
+  color: #008068;
+  transition: 0.2s;
+}
+
+.options a.active {
+  color: #008068;
+  transition: 0.2s;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+}
+
+.navigation a:hover {
+  text-decoration: none;
+  color: #008068;
+  transition: 0.2s;
+}
+
+.navigation a.active {
+  text-decoration: none;
+  color: #008068;
+}
