@@ -1,8 +1,56 @@
 import React, { Component } from "react";
 
 class Career extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [],
+      list: [],
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:4001/tasks")
+      .then((res) => res.json())
+      .then((response) => {
+        this.setState({
+          tasks: [...response],
+        });
+        console.log(response);
+      });
+  };
+
   render() {
-    return <div>Career</div>;
+    return (
+      <div className="career">
+        <input
+          name="search"
+          onChange={(e) => {
+            this.setState({ list: e.target.value });
+            console.log(this.state.list);
+          }}
+        />
+        {this.state.tasks
+          .filter((tasks) => {
+            if (this.state.list === "") {
+              return tasks;
+            } else if (
+              tasks.program
+                .toString()
+                .toLowerCase()
+                .includes(this.state.list.toString().toLowerCase())
+            ) {
+              return tasks;
+            }
+          })
+          .map((tasks, index) => {
+            return (
+              <div key={index}>
+                <p>{tasks.program}</p>
+              </div>
+            );
+          })}
+      </div>
+    );
   }
 }
 

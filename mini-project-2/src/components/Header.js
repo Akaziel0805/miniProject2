@@ -6,24 +6,20 @@ function Header() {
   return (
     <div className="header">
       <div className="LOGO">LOGO</div>
-      <div className="search">
-        <ul>
-          <li>
-            <ion-icon name="search-outline"></ion-icon>
-          </li>
-          <li>
-            <input
-              type="text"
-              className="search-bar"
-              placeholder="Search..."></input>
-          </li>
-        </ul>
-      </div>
+
       <div className="options">
         <NavLink to="/">
-          <p>Resources</p>
+          <p>Latest</p>
         </NavLink>
-
+        <NavLink to="career">
+          <p>Career Path</p>
+        </NavLink>
+        <NavLink to="program">
+          <p>Program Details</p>
+        </NavLink>
+        <NavLink to="materials">
+          <p>Materials</p>
+        </NavLink>
         <NavLink to="sign">
           <p>Sign in</p>
         </NavLink>
