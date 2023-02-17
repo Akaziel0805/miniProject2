@@ -12,7 +12,7 @@ export class ProgramCard extends Component {
       borderColor: "solid rgb(157, 157, 157)",
       backgroundColor: "#ffffff",
       tasks: [],
-      id: [],
+      id: [""],
       dataLength: "",
       zIndex: -2,
       opacity: 0,
@@ -28,9 +28,15 @@ export class ProgramCard extends Component {
           tasks: [...response],
           dataLength: `${response.length}`,
         });
-        console.log(this.state.dataLength);
       });
   };
+
+  getId(id) {
+    this.setState({
+      id: id,
+    });
+    console.log(id);
+  }
 
   addIndex = () => {
     this.setState({
@@ -46,13 +52,25 @@ export class ProgramCard extends Component {
     });
   };
 
-  taskSelect(id, program, institution, years, location) {
-    console.log(program);
+  taskSelect(
+    id,
+    program,
+    institution,
+    years,
+    location,
+    description,
+    college,
+    career
+  ) {
     selectedId = id;
     document.getElementById("program").value = program;
     document.getElementById("institution").value = institution;
     document.getElementById("years").value = years;
     document.getElementById("location").value = location;
+    document.getElementById("descriptions").value = description;
+    document.getElementById("college").value = college;
+    document.getElementById("career").value = career;
+
     this.setState({
       zIndex: 2,
       opacity: 1,
@@ -71,6 +89,9 @@ export class ProgramCard extends Component {
         updatedSchool: document.getElementById("institution").value,
         updatedTime: document.getElementById("years").value,
         updatedPlace: document.getElementById("location").value,
+        updatedDesc: document.getElementById("descriptions").value,
+        updatedCol: document.getElementById("college").value,
+        updatedCar: document.getElementById("career").value,
       })
       .then((response) => {
         const updatedIndex = this.state.tasks.findIndex((task) => {
@@ -99,12 +120,21 @@ export class ProgramCard extends Component {
 
   formSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      id: [""],
+    });
+    const userId = document.cookie.split(";")[0].split("=")[1];
+    console.log(document.cookie.split(";"));
     axios
       .post("http://localhost:4001/tasks", {
         degree: e.target.program.value,
         school: e.target.institution.value,
         time: e.target.years.value,
         place: e.target.location.value,
+        desc: e.target.descriptions.value,
+        col: e.target.college.value,
+        car: e.target.career.value,
+        user: userId,
       })
       .then((response) => {
         this.setState({
@@ -115,11 +145,13 @@ export class ProgramCard extends Component {
               institution: e.target.institution.value,
               years: e.target.years.value,
               location: e.target.location.value,
+              description: e.target.descriptions.value,
+              college: e.target.college.value,
+              career: e.target.career.value,
             },
           ],
         });
       });
-    console.log(this.state.tasks);
   };
 
   render() {
@@ -157,24 +189,49 @@ export class ProgramCard extends Component {
                 type="text"
                 id="program"
                 className="input-form"
+                placeholder="Enter program"
               />
               <input
                 name="institution"
                 type="text"
                 id="institution"
                 className="input-form"
+                placeholder="Enter institution"
               />
               <input
                 name="years"
                 type="text"
                 id="years"
                 className="input-form"
+                placeholder="Enter years to finish"
               />
               <input
                 name="location"
                 type="text"
                 id="location"
                 className="input-form"
+                placeholder="Enter address"
+              />
+              <input
+                name="descriptions"
+                type="text"
+                id="descriptions"
+                className="input-form"
+                placeholder="Enter program description"
+              />
+              <input
+                name="college"
+                type="text"
+                id="college"
+                className="input-form"
+                placeholder="Enter college department"
+              />
+              <input
+                name="career"
+                type="text"
+                id="career"
+                className="input-form"
+                placeholder="Enter career path"
               />
               <button type="submit">Add</button>
             </form>
@@ -215,7 +272,7 @@ export class ProgramCard extends Component {
                       backgroundColor: `${this.state.backgroundColor}`,
                     }}
                     onClick={() => {
-                      this.cardActive(task.id);
+                      this.getId(task.id);
                     }}
                     className="program-card">
                     <li>
@@ -244,7 +301,10 @@ export class ProgramCard extends Component {
                             task.program,
                             task.institution,
                             task.years,
-                            task.location
+                            task.location,
+                            task.description,
+                            task.college,
+                            task.career
                           );
                         }}>
                         EDIT
@@ -263,48 +323,39 @@ export class ProgramCard extends Component {
             })}
         </div>
         <div className="program-desc">
-          <div className="program-desc-cards">
-            <div className="prog">
-              <p className="prog-course">BS in Mechanical Engineering</p>
-            </div>
+          {this.state.tasks
+            .filter((task) => {
+              if (this.state.id.toString() === "") {
+                return task;
+              } else if (
+                task.id.toString().includes(this.state.id.toString())
+              ) {
+                return task;
+              }
+            })
+            .map((task, index) => {
+              return (
+                <div key={index} className="program-desc-cards">
+                  <div className="prog">
+                    <p className="prog-course">BS in Mechanical Engineering</p>
+                    <p className="prog-college">{task.college}</p>
+                  </div>
 
-            <div className="prog-nav">
-              <p>Description</p>
-              <p>Career Path</p>
-              <p>Syllabus</p>
-            </div>
-            <div className="prog-desc">
-              <p>DESCRIPTION</p>
-              <p className="prog-desc-desc">
-                What Is Mechanical Engineering? Technically, mechanical
-                engineering is the application of the principles and
-                problem-solving techniques of engineering from design to
-                manufacturing to the marketplace for any object. Mechanical
-                engineers analyze their work using the principles of motion,
-                energy, and force—ensuring that designs function safely,
-                efficiently, and reliably, all at a competitive cost. Mechanical
-                engineers make a difference. That's because mechanical
-                engineering careers center on creating technologies to meet
-                human needs. Virtually every product or service in modern life
-                has probably been touched in some way by a mechanical engineer
-                to help humankind. This includes solving today's problems and
-                creating future solutions in health care, energy,
-                transportation, world hunger, space exploration, climate change,
-                and more. Being ingrained in many challenges and innovations
-                across many fields means a mechanical engineering education is
-                versatile. To meet this broad demand, mechanical engineers may
-                design a component, a machine, a system, or a process. This
-                ranges from the macro to the micro, from the largest systems
-                like cars and satellites to the smallest components like sensors
-                and switches. Anything that needs to be manufactured—indeed,
-                anything with moving parts—needs the expertise of a mechanical
-                engineer.
-              </p>
-            </div>
-            <div className="prog-path">
-              <p>CAREER PATH</p>
-            </div>
-          </div>
+                  <div className="prog-nav">
+                    <p>Description</p>
+                    <p>Career Path</p>
+                    <p>Syllabus</p>
+                  </div>
+                  <div className="prog-desc">
+                    <p>DESCRIPTION</p>
+                    <p className="prog-desc-desc">{task.description}</p>
+
+                    <p>CAREER PATH</p>
+                    <p>{task.career}</p>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </>
     );

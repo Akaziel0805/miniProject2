@@ -365,6 +365,9 @@
   display: block;
   margin: 10px;
 }
+.form input:nth-child(5) {
+  height: 50px;
+}
 .form span {
   font-size: 20px;
 }
@@ -443,6 +446,7 @@
   top: 80px;
   border-radius: 10px;
   overflow: scroll;
+  font-size: 14px;
 }
 .program-desc-cards::-webkit-scrollbar {
   background: transparent;
@@ -453,8 +457,7 @@
   width: 0px;
 }
 .program-desc-cards {
-  position: absolute;
-  left: 10px;
+  margin: 0 0 10px 10px;
   height: 740px;
   width: 590px;
   background-color: #ffffff;
@@ -463,17 +466,52 @@
   border-radius: 10px;
   overflow: scroll;
 }
+.prog {
+  position: relative;
+  height: 55px;
+  border-bottom: solid #b7b7b7;
+  border-width: 1.3px;
+  font-size: 15px;
+  font-weight: 500;
+}
 
-.prog-desc-desc {
-  margin: 15px;
+.prog-course {
+  margin: 13px 15px 0 20px;
+  font-size: 17px;
+}
+.prog-college {
+  margin: 0 15px 0 20px;
+  color: rgb(104, 104, 104);
+  font-size: 14px;
 }
 .prog-nav {
   position: relative;
   display: flex;
-  border: solid black;
+  border-bottom: solid #b7b7b7;
+  border-width: 1.3px;
 }
 .prog-nav p {
-  margin: 10px 15px;
+  margin: 10px 15px 10px 20px;
+}
+.prog-desc {
+  position: relative;
+  height: 500px;
+  overflow: scroll;
+}
+.prog-desc::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}
+.prog-desc p {
+  margin: 15px 40px 15px 20px;
+}
+/* .prog-desc-desc {
+} */
+.prog-desc p:nth-child(1) {
+  font-weight: 500;
+}
+.prog-desc p:nth-child(3) {
+  font-weight: 500;
 }
 
 /* Sign in */

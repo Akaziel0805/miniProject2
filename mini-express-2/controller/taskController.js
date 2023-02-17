@@ -11,6 +11,10 @@ exports.insertTask = async (req, res) => {
     institution: req.body.school,
     years: req.body.time,
     location: req.body.place,
+    description: req.body.desc,
+    college: req.body.col,
+    career: req.body.car,
+    userId: req.body.user,
   };
   const result = await task.create(insertedTask);
   res.send(result);
@@ -22,6 +26,9 @@ exports.updateTask = async (req, res) => {
     institution: req.body.updatedSchool,
     years: req.body.updatedTime,
     location: req.body.updatedPlace,
+    description: req.body.updatedDesc,
+    college: req.body.updatedCol,
+    career: req.body.updatedCar,
   };
   const result = await task.update(updatedTask, {
     where: {

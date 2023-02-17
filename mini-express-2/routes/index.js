@@ -15,6 +15,7 @@ router.post("/tasks", insertTask);
 router.put("/tasks/:id", updateTask);
 router.delete("/tasks/:id", deleteTask);
 
+router.get("/login", getUsers);
 router.post("/login", getUsers);
 router.post("/register", insertUser);
 

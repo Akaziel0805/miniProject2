@@ -11,18 +11,35 @@ const task = instance.sequelize.define(
     },
     program: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     institution: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     years: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     location: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    college: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    career: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   },
   {

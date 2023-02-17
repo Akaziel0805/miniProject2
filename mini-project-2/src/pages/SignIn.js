@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 class SignIn extends Component {
   constructor(props) {
@@ -66,6 +67,7 @@ class SignIn extends Component {
         document.cookie =
           response.data.length > 0 ? `user=${response.data[0].id}` : "";
       });
+    console.log();
   };
 
   render() {
