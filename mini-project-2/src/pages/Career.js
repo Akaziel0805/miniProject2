@@ -6,6 +6,7 @@ class Career extends Component {
     this.state = {
       tasks: [],
       list: [],
+      anotherList: [],
     };
   }
   componentDidMount = () => {
@@ -29,6 +30,13 @@ class Career extends Component {
             console.log(this.state.list);
           }}
         />
+        <input
+          name="search"
+          onChange={(e) => {
+            this.setState({ anotherList: e.target.value });
+            console.log(this.state.anotherList);
+          }}
+        />
         {this.state.tasks
           .filter((tasks) => {
             if (this.state.list === "") {
@@ -42,10 +50,23 @@ class Career extends Component {
               return tasks;
             }
           })
+          .filter((tasks) => {
+            if (this.state.anotherList === "") {
+              return tasks;
+            } else if (
+              tasks.location
+                .toString()
+                .toLowerCase()
+                .includes(this.state.anotherList.toString().toLowerCase())
+            ) {
+              return tasks;
+            }
+          })
           .map((tasks, index) => {
             return (
               <div key={index}>
                 <p>{tasks.program}</p>
+                <p>{tasks.location}</p>
               </div>
             );
           })}

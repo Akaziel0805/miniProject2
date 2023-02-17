@@ -8,11 +8,15 @@ const {
   updateTask,
 } = require("../controller/taskController");
 
-router.get("/tasks", getTasks);
+const { insertUser, getUsers } = require("../controller/userController");
 
+router.get("/tasks", getTasks);
 router.post("/tasks", insertTask);
 router.put("/tasks/:id", updateTask);
 router.delete("/tasks/:id", deleteTask);
+
+router.post("/login", getUsers);
+router.post("/register", insertUser);
 
 // /* GET home page. */
 // router.get('/', function(req, res, next) {

@@ -3,7 +3,7 @@
   height: 60px;
   width: 100%;
   background-color: #575757;
-  z-index: 2;
+  z-index: 4;
 }
 .header .LOGO {
   position: absolute;
@@ -281,11 +281,16 @@
 .program-container {
   position: absolute;
   width: 600px;
-  height: 90%;
-  top: 90px;
+  height: 93.4%;
+  top: 62px;
   left: 5%;
   overflow-y: scroll;
-  border: solid black;
+  /* border: solid black; */
+}
+.program-container .notif {
+  margin-left: 55px;
+  color: rgb(97, 97, 97);
+  font-size: 15px;
 }
 .program-container::-webkit-scrollbar {
   background: transparent;
@@ -298,7 +303,70 @@
   width: 100%;
   background-color: #d9d9d9;
   box-shadow: 0px 3px 5px 3px rgb(84, 84, 84);
+  z-index: 3;
+}
+.program-nav-add {
+  position: absolute;
+  top: 8px;
+  left: 67px;
+  font-size: 35px;
+  color: #008068;
+  z-index: 1;
+}
+.program-nav-index {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 15px 10px 10px 15px;
+  padding: 4.5px 15px 6px 35px;
+  left: 75px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1960d3;
+}
+.program-nav-search {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  width: 250px;
+  height: 40px;
+}
+.program-nav-search span {
+  position: relative;
+  font-size: 22px;
+  padding-right: 6px;
+  top: 5px;
+}
+.program-nav-search input {
+  height: 18px;
+  width: 200px;
+}
+
+.form-container {
+  position: absolute;
+  top: 55px;
+  height: 100%;
+  width: 100%;
   z-index: 2;
+  background-color: #000000e0;
+  transition: 0.4s;
+}
+.form {
+  position: absolute;
+  top: 20%;
+  left: 14%;
+  height: 500px;
+  width: 1000px;
+  border: solid black;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.form .input-form {
+  display: block;
+  margin: 10px;
+}
+.form span {
+  font-size: 20px;
 }
 
 /* ProgramCard */
@@ -308,7 +376,7 @@
   height: 175px;
   width: 500px;
   list-style: none;
-  box-shadow: 0px 3px 5px 3px rgb(84, 84, 84);
+  box-shadow: 0px 3px 4px 2px rgb(84, 84, 84);
   border-radius: 10px;
   margin: 20px 50px;
   transition: 1s;
@@ -319,7 +387,8 @@
   top: 15px;
 }
 .program-card li:nth-child(1) {
-  font-size: 18px;
+  font-size: 19px;
+  font-weight: 500;
 }
 .program-card li:nth-child(2) {
   color: rgb(61, 61, 61);
@@ -350,26 +419,61 @@
   font-size: 15px;
 }
 .program-card li:nth-child(5) {
-  top: -110px;
-  left: 340px;
+  top: -115px;
+  left: 320px;
 }
 .program-card li:nth-child(5) button {
-  width: 60px;
-  padding: 3px 5px;
+  width: 70px;
+  padding: 4px 0px;
   margin: 0px 5px;
   border-radius: 5px;
   border-width: 1.3px;
+  background-color: #008068;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 1px;
 }
 .program-desc {
   position: absolute;
-  height: 600px;
-  width: 580px;
-  background-color: #bfd0cc;
-  border: solid #008068;
+  height: 750px;
+  width: 650px;
   border-width: 1.6px;
   left: 700px;
   top: 80px;
   border-radius: 10px;
+  overflow: scroll;
+}
+.program-desc-cards::-webkit-scrollbar {
+  background: transparent;
+  width: 0px;
+}
+.program-desc::-webkit-scrollbar {
+  background: transparent;
+  width: 0px;
+}
+.program-desc-cards {
+  position: absolute;
+  left: 10px;
+  height: 740px;
+  width: 590px;
+  background-color: #ffffff;
+  border: solid #008068;
+  border-width: 1.6px;
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+.prog-desc-desc {
+  margin: 15px;
+}
+.prog-nav {
+  position: relative;
+  display: flex;
+  border: solid black;
+}
+.prog-nav p {
+  margin: 10px 15px;
 }
 
 /* Sign in */
@@ -428,6 +532,7 @@
   margin-bottom: 2px;
   font-weight: 500;
   color: #1960d3;
+  cursor: pointer;
 }
 .sign-in button {
   width: 353px;
@@ -450,19 +555,73 @@
   background-color: #1960d3;
   transition: 0.4s;
 }
-/* formSubmit */
-.form {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  height: 500px;
-  width: 500px;
-  border: solid black;
-  z-index: 1;
-}
 
-.form .input-log {
+/* sign up */
+.sign-up {
+  position: absolute;
+  height: 650px;
+  width: 500px;
+  background-color: #ffffff;
+  border-width: 1.6px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.sign-up .welcome {
+  font-size: 40px;
+  font-weight: 500;
+  margin-left: 65px;
+  margin-bottom: 0;
+  margin-top: 50px;
+}
+.sign-up .cred {
+  font-size: 19px;
+  margin-left: 70px;
+  margin-top: 35px;
+  margin-bottom: 11px;
+}
+.sign-up .input-log {
   display: block;
+  margin: 0;
+  width: 300px;
+}
+.sign-up .input-log input {
+  width: 340px;
+  height: 35px;
+  margin: 10px 70px;
+  border-radius: 5px;
+  border-width: 1.6px;
+  border-color: #008068;
+  padding-left: 10px;
+}
+.sign-up .redirect {
+  font-size: 14px;
+  margin-left: 70px;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  font-weight: 500;
+  color: #1960d3;
+  cursor: pointer;
+}
+.sign-up button {
+  width: 353px;
+  height: 40px;
+  margin: 15px 70px;
+  background-color: #008068;
+  border: solid #008068;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+.sign-up button:hover {
+  background-color: #00705b;
+}
+.sign-up .line {
+  margin: 0 70px;
+  padding: 0;
+  height: 1.6px;
+  background-color: #1960d3;
+  transition: 0.4s;
 }
 
 /* Footer */
