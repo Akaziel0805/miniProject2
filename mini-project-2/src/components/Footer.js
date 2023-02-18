@@ -15,12 +15,7 @@ export class Footer extends Component {
             <p>LOGO. Copyright © 2022-2023. All Rights Reserved.</p>
           </div>
         </div>
-        <div className="right-column">
-          <div>
-            <ion-icon name="mail-outline"></ion-icon>
-            <p></p>
-          </div>
-        </div>
+        <div className="right-column"></div>
       </div>
     );
   }

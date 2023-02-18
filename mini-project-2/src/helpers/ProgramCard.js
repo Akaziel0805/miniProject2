@@ -1,6 +1,7 @@
 import { click } from "@testing-library/user-event/dist/click";
 import React, { Component } from "react";
 import axios from "axios";
+import syllabus from "../pictures/syllabus.jpg";
 
 var selectedId, selectedTask;
 var thisId;
@@ -8,6 +9,7 @@ var thisId;
 export class ProgramCard extends Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
       borderColor: "solid rgb(157, 157, 157)",
       backgroundColor: "#ffffff",
@@ -124,7 +126,6 @@ export class ProgramCard extends Component {
       id: [""],
     });
     const userId = document.cookie.split(";")[0].split("=")[1];
-    console.log(document.cookie.split(";"));
     axios
       .post("http://localhost:4001/tasks", {
         degree: e.target.program.value,
@@ -153,7 +154,10 @@ export class ProgramCard extends Component {
         });
       });
   };
-
+  executeScroll = (e) =>
+    this.myRef.current.scrollIntoView({
+      behavior: e.smooth,
+    });
   render() {
     thisId = this.state.id;
     return (
@@ -174,6 +178,11 @@ export class ProgramCard extends Component {
                 console.log(this.state.list);
               }}
             />
+            <select>
+              <option>Surigao del Norte</option>
+              <option>Lanao del Norte</option>
+              <option>Lanao del Sur</option>
+            </select>
           </span>
         </div>
         <div
@@ -188,49 +197,49 @@ export class ProgramCard extends Component {
                 name="program"
                 type="text"
                 id="program"
-                className="input-form"
+                className="input-form1"
                 placeholder="Enter program"
               />
               <input
                 name="institution"
                 type="text"
                 id="institution"
-                className="input-form"
+                className="input-form2"
                 placeholder="Enter institution"
               />
               <input
                 name="years"
                 type="text"
                 id="years"
-                className="input-form"
+                className="input-form3"
                 placeholder="Enter years to finish"
               />
               <input
                 name="location"
                 type="text"
                 id="location"
-                className="input-form"
+                className="input-form4"
                 placeholder="Enter address"
               />
               <input
                 name="descriptions"
                 type="text"
                 id="descriptions"
-                className="input-form"
+                className="input-form5"
                 placeholder="Enter program description"
               />
               <input
                 name="college"
                 type="text"
                 id="college"
-                className="input-form"
+                className="input-form6"
                 placeholder="Enter college department"
               />
               <input
                 name="career"
                 type="text"
                 id="career"
-                className="input-form"
+                className="input-form7"
                 placeholder="Enter career path"
               />
               <button type="submit">Add</button>
@@ -344,7 +353,7 @@ export class ProgramCard extends Component {
                   <div className="prog-nav">
                     <p>Description</p>
                     <p>Career Path</p>
-                    <p>Syllabus</p>
+                    <p onClick={this.executeScroll}>Syllabus</p>
                   </div>
                   <div className="prog-desc">
                     <p>DESCRIPTION</p>
@@ -352,6 +361,9 @@ export class ProgramCard extends Component {
 
                     <p>CAREER PATH</p>
                     <p>{task.career}</p>
+                    <p>SYLLABUS</p>
+                    <img ref={this.myRef} src={syllabus} />
+                    <p></p>
                   </div>
                 </div>
               );

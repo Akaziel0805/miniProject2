@@ -11,9 +11,6 @@ function Header() {
         <NavLink to="/">
           <p>Latest</p>
         </NavLink>
-        <NavLink to="career">
-          <p>Career Path</p>
-        </NavLink>
         <NavLink to="program">
           <p>Program Details</p>
         </NavLink>

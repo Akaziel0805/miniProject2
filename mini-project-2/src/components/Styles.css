@@ -327,7 +327,7 @@
   position: absolute;
   top: 10px;
   left: 250px;
-  width: 250px;
+  width: 500px;
   height: 40px;
 }
 .program-nav-search span {
@@ -339,6 +339,19 @@
 .program-nav-search input {
   height: 18px;
   width: 200px;
+  border-radius: 5px;
+}
+.program-nav-search select {
+  position: relative;
+  left: 10px;
+  top: 0.9px;
+  height: 24px;
+  width: 160px;
+  padding-left: 20px;
+  border-radius: 5px;
+  background-color: #008068;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .form-container {
@@ -458,7 +471,7 @@
 }
 .program-desc-cards {
   margin: 0 0 10px 10px;
-  height: 740px;
+  height: 730px;
   width: 590px;
   background-color: #ffffff;
   border: solid #008068;
@@ -493,9 +506,12 @@
 .prog-nav p {
   margin: 10px 15px 10px 20px;
 }
+.prog-nav p:hover {
+  color: #1960d3;
+}
 .prog-desc {
   position: relative;
-  height: 500px;
+  height: 680px;
   overflow: scroll;
 }
 .prog-desc::-webkit-scrollbar {
@@ -505,13 +521,19 @@
 .prog-desc p {
   margin: 15px 40px 15px 20px;
 }
-/* .prog-desc-desc {
-} */
 .prog-desc p:nth-child(1) {
   font-weight: 500;
 }
 .prog-desc p:nth-child(3) {
   font-weight: 500;
+}
+.prog-desc p:nth-child(5) {
+  font-weight: 500;
+}
+.prog-desc img {
+  height: 500px;
+  width: 550px;
+  margin: 15px 40px 15px 20px;
 }
 
 /* Sign in */
