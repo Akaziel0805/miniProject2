@@ -154,10 +154,7 @@ export class ProgramCard extends Component {
         });
       });
   };
-  executeScroll = (e) =>
-    this.myRef.current.scrollIntoView({
-      behavior: e.smooth,
-    });
+  executeScroll = (e) => this.myRef.current.scrollIntoView({});
   render() {
     thisId = this.state.id;
     return (
@@ -346,7 +343,7 @@ export class ProgramCard extends Component {
               return (
                 <div key={index} className="program-desc-cards">
                   <div className="prog">
-                    <p className="prog-course">BS in Mechanical Engineering</p>
+                    <p className="prog-course">{task.program}</p>
                     <p className="prog-college">{task.college}</p>
                   </div>
 

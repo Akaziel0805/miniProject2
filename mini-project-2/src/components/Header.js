@@ -14,9 +14,6 @@ function Header() {
         <NavLink to="program">
           <p>Program Details</p>
         </NavLink>
-        <NavLink to="materials">
-          <p>Materials</p>
-        </NavLink>
         <NavLink to="sign">
           <p>Sign in</p>
         </NavLink>

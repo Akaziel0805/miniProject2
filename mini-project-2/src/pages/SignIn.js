@@ -86,8 +86,16 @@ class SignIn extends Component {
             <p className="welcome">Welcome!</p>
             <p className="cred">Please Sign In</p>
             <span className="input-log">
-              <input name="username" placeholder="Enter username..." />
-              <input name="password" placeholder="Enter password..." />
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter username..."
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password..."
+              />
             </span>
 
             <p onClick={this.setIndex2} className="redirect">
